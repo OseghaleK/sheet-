@@ -1,0 +1,300 @@
+body {
+        font-family: Arial, sans-serif;
+        font-size: 10px;
+        line-height: 1.2;
+        color: #333;
+        max-width: 8.5in;
+        margin: 0 auto;
+        background: white;
+    }
+    
+    .header {
+        text-align: center;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 8px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+    }
+    
+    .header h1 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    
+    .header p {
+        margin: 2px 0 0 0;
+        font-size: 10px;
+        opacity: 0.9;
+    }
+    
+    .section {
+        background: #f8f9ff;
+        border: 1px solid #e1e5f7;
+        border-radius: 6px;
+        padding: 8px;
+        margin-bottom: 8px;
+        page-break-inside: avoid;
+    }
+    
+    .section h2 {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        color: white;
+        margin: -8px -8px 6px -8px;
+        padding: 4px 8px;
+        font-size: 12px;
+        border-radius: 6px 6px 0 0;
+        font-weight: bold;
+    }
+    
+    .formula-box {
+        background: #fff;
+        border: 1px solid #d1d9ff;
+        border-radius: 4px;
+        padding: 4px;
+        margin: 3px 0;
+        font-weight: bold;
+        color: #2c3e50;
+        font-size: 10px;
+    }
+    
+    .example {
+        background: #f0f8ff;
+        border-left: 3px solid #4facfe;
+        padding: 3px 6px;
+        margin: 3px 0;
+        font-size: 9px;
+    }
+    
+    .hint {
+        background: #fff3cd;
+        border: 1px solid #ffeaa7;
+        border-radius: 3px;
+        padding: 3px 5px;
+        margin: 3px 0;
+        font-size: 9px;
+        color: #856404;
+    }
+    
+    .two-column {
+        display: flex;
+        gap: 10px;
+    }
+    
+    .column {
+        flex: 1;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 10px;
+        margin: 5px 0;
+    }
+    
+    th, td {
+        border: 1px solid #ddd;
+        padding: 3px 5px;
+        text-align: center;
+    }
+    
+    th {
+        background: #4facfe;
+        color: white;
+        font-weight: bold;
+    }
+    
+    .page-break {
+        page-break-before: always;
+    }
+    
+    .steps {
+        margin: 3px 0;
+        padding-left: 12px;
+        font-size: 9px;
+    }
+    
+    .steps li {
+        margin: 1px 0;
+    }
+</style>
+<div class="section">
+    <h2>1. Probability Distributions</h2>
+    
+    <div class="formula-box">
+        Expected Value (Mean): E(X) = Σ[x · P(x)]
+    </div>
+    
+    <div class="example">
+        <strong>Example:</strong> Store visits: P(0)=0.1, P(1)=0.4, P(2)=0.4, P(3)=0.1<br>
+        E(X) = 0×0.1 + 1×0.4 + 2×0.4 + 3×0.1 = 1.5
+    </div>
+    
+    <div class="formula-box">
+        Variance: Var(X) = E(X²) - [E(X)]²
+    </div>
+    
+    <div class="steps">
+        <strong>Steps:</strong>
+        <ol>
+            <li>Find E(X²) = Σ[x² · P(x)]</li>
+            <li>Calculate Var(X) = E(X²) - [E(X)]²</li>
+            <li>Standard Deviation: σ = √Var(X)</li>
+        </ol>
+    </div>
+    
+    <div class="example">
+        E(X²) = 0²×0.1 + 1²×0.4 + 2²×0.4 + 3²×0.1 = 2.9<br>
+        Var(X) = 2.9 - (1.5)² = 0.65, σ = √0.65 = 0.806
+    </div>
+</div>
+
+<div class="section">
+    <h2>2. Binomial Distribution</h2>
+    
+    <div class="hint">
+        Use when: Fixed trials, two outcomes, constant probability
+    </div>
+    
+    <div class="formula-box">
+        P(X = k) = C(n,k) × p^k × (1-p)^(n-k)
+    </div>
+    
+    <div class="example">
+        <strong>Rifleman Example:</strong> n=4, p=0.8, find P(exactly 2 hits)<br>
+        P(X = 2) = C(4,2) × (0.8)² × (0.2)² = 6 × 0.64 × 0.04 = 0.1536
+    </div>
+    
+    <div class="two-column">
+        <div class="column">
+            <div class="formula-box">
+                Mean: μ = n × p
+            </div>
+            <div class="formula-box">
+                Variance: σ² = n × p × (1-p)
+            </div>
+        </div>
+        <div class="column">
+            <div class="example">
+                <strong>Die Example:</strong> n=54, p=1/6<br>
+                μ = 9, σ² = 7.5, σ = 2.739
+            </div>
+        </div>
+    </div>
+    
+    <div class="hint">
+        At least one success: P(X ≥ 1) = 1 - P(X = 0) = 1 - (1-p)^n
+    </div>
+</div>
+
+<div class="section">
+    <h2>3. Normal Distribution</h2>
+    
+    <div class="formula-box">
+        Z-Score: Z = (X - μ) / σ
+    </div>
+    
+    <div class="example">
+        <strong>Example:</strong> X ~ N(10, 2²), find P(11 < X < 13)<br>
+        Z₁ = (11-10)/2 = 0.5, Z₂ = (13-10)/2 = 1.5<br>
+        P(11 < X < 13) = P(Z < 1.5) - P(Z < 0.5) = 0.9332 - 0.6915 = 0.2417
+    </div>
+    
+    <div class="two-column">
+        <div class="column">
+            <div class="formula-box">
+                Finding X from percentile:<br>
+                X = μ + Z × σ
+            </div>
+            <div class="example">
+                Bottom 1.5%, μ=400, σ=100<br>
+                Z = -2.17, X = 400 + (-2.17)(100) = 183
+            </div>
+        </div>
+        <div class="column">
+            <div class="formula-box">
+                Finding μ when σ known:<br>
+                μ = X - Z × σ
+            </div>
+            <div class="example">
+                2.5% below 85, σ=6<br>
+                Z = -1.96, μ = 85 - (-1.96)(6) = 96.76
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-break"></div>
+
+<div class="section">
+    <h2>4. Central Limit Theorem (CLT)</h2>
+    
+    <div class="hint">
+        Sample means are normally distributed regardless of population shape (n ≥ 30)
+    </div>
+    
+    <div class="formula-box">
+        Standard Error: σx̄ = σ / √n
+    </div>
+    
+    <div class="formula-box">
+        Z-score for sample mean: Z = (X̄ - μ) / (σ/√n)
+    </div>
+    
+    <div class="example">
+        <strong>Actuarial Salaries:</strong> μ=$40,000, σ=$5,000<br>
+        • Individual P(X > $45,000): Z = (45000-40000)/5000 = 1 → P = 0.1587<br>
+        • Group of 9 P(X̄ > $45,000): Z = (45000-40000)/(5000/√9) = 3 → P = 0.0013
+    </div>
+</div>
+
+<div class="section">
+    <h2>5. Expected Value Applications</h2>
+    
+    <div class="formula-box">
+        Lottery Pricing: Price = (Total Prizes + Desired Profit) / Number of Tickets
+    </div>
+    
+    <div class="example">
+        <strong>Example:</strong> 1000 tickets, $1500 prizes, want $2500 profit<br>
+        Price = (1500 + 2500) / 1000 = $4.00 per ticket
+    </div>
+</div>
+
+<div class="section">
+    <h2>6. Quick Reference</h2>
+    
+    <div class="two-column">
+        <div class="column">
+            <table>
+                <tr><th>Percentile</th><th>Z-Score</th></tr>
+                <tr><td>1%</td><td>-2.33</td></tr>
+                <tr><td>2.5%</td><td>-1.96</td></tr>
+                <tr><td>5%</td><td>-1.645</td></tr>
+                <tr><td>10%</td><td>-1.28</td></tr>
+                <tr><td>90%</td><td>1.28</td></tr>
+                <tr><td>95%</td><td>1.645</td></tr>
+                <tr><td>97.5%</td><td>1.96</td></tr>
+                <tr><td>99%</td><td>2.33</td></tr>
+            </table>
+        </div>
+        <div class="column">
+            <div class="hint">
+                <strong>Calculator Functions:</strong><br>
+                • Combinations: nCr or C(n,r)<br>
+                • Powers: x² or ^<br>
+                • Square root: √<br>
+                • Factorials: !<br>
+                • Normal CDF (if available)
+            </div>
+            
+            <div class="hint">
+                <strong>Common Shortcuts:</strong><br>
+                • P(at least 1) = 1 - P(none)<br>
+                • Always standardize for normal<br>
+                • CLT: larger n = smaller error
+            </div>
+        </div>
+    </div>
+</div>
